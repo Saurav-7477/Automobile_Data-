@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraping and Summarization Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E6F7FF; /* Light blue background for a calming effect */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #388E3C; /* Green color for a nature feel */
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        strong {
+            color: #388E3C; /* Green color for strong emphasis */
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 16px;
+            text-align: left;
+        }
+        th {
+            background-color: #388E3C; /* Green color for header */
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #F2F2F2; /* Light grey for even rows */
+        }
+        a {
+            color: #388E3C; /* Green color for links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #388E3C; /* Green color for back button */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background-color: #2E7D32; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Scraping and Summarization Result</h1>
+    <p>Scraping and summarization complete! Here are the results:</p>
+    <p>Total number of links: {{ summaries|length }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>URL</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in summaries %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="{{ item.Link }}" target="_blank">{{ item.Link }}</a></td>
+                    <td>{{ item.Summary }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}" class="back-link">Back to Home</a>
+</body>
+</html>

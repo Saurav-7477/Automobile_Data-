@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E6F7FF; /* Light blue background for a calming effect */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #388E3C; /* Green color for a nature feel */
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        strong {
+            color: #388E3C; /* Green color for strong emphasis */
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 16px;
+            text-align: left;
+        }
+        th {
+            background-color: #388E3C; /* Green color for header */
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #F2F2F2; /* Light grey for even rows */
+        }
+        a {
+            color: #388E3C; /* Green color for links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #388E3C; /* Green color for back button */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background-color: #2E7D32; /* Darker green on hover */
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                indicateTaskRunning();
+            });
+        });
+
+        function indicateTaskRunning() {
+            var button = $('button[type="submit"]');
+            button.prop('disabled', true).text('Scraping and Summarizing...').append('<span class="loader"></span>');
+        }
+    </script>
+</head>
+<body>
+    <h1>Nirantara Ecoventures Private Limited</h1>
+    <form method="post">
+        <label for="search_query">Your Magical Keywords:</label>
+        <input type="text" id="search_query" name="search_query" required>
+        <button type="submit">Scrape and Summarize</button>
+    </form>
+    <footer>
+        <p>© 2023 Nirantara Ecoventures Private Limited. All rights reserved.</p>
+    </footer>
+</body>
+</html>
